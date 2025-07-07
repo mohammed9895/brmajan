@@ -20,6 +20,7 @@ use Filament\Forms\Get;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\HtmlString;
 use Livewire\Attributes\Layout;
@@ -42,26 +43,22 @@ class Index extends Component implements HasForms
         return $form
             ->schema([
                 Wizard::make([
-                    Step::make('Rules')
+                    Step::make(__('hackathon.onboarding.steps.rules'))
                         ->icon('hugeicons-check-list')
                         ->schema([
                             View::make('filament.resources.team-resource.rules')
                                 ->columnSpanFull(),
                         ]),
-                    Step::make('Team Building')
+                    Step::make(__('hackathon.onboarding.steps.team_building'))
                         ->icon('hugeicons-tools')
                         ->schema([
-                            Select::make('user_id')
-                                ->relationship('user', 'name')
-                                ->searchable()
-                                ->getSearchResultsUsing(fn (string $search): array => User::where('name', 'like', "%{$search}%")->orWhere('email', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray())
-                                ->preload()
-                                ->required(),
                             TextInput::make('name')
                                 ->required()
+                                ->label(__('hackathon.onboarding.fields.name'))
                                 ->maxLength(255),
                             Select::make('number_of_members')
                                 ->required()
+                                ->label(__('hackathon.onboarding.fields.number_of_members'))
                                 ->searchable()
                                 ->options([
                                     3 => '3',
@@ -69,42 +66,53 @@ class Index extends Component implements HasForms
                                     5 => '5',
                                 ]),
                             Select::make('type')
+                                ->label(__('hackathon.onboarding.fields.type'))
                                 ->options(TeamType::class)
                                 ->searchable()
                                 ->required(),
                             RichEditor::make('features')
+                                ->label(__('hackathon.onboarding.fields.features'))
                                 ->columnSpanFull(),
                             RichEditor::make('registration_reason')
+                                ->label(__('hackathon.onboarding.fields.registration_reason'))
                                 ->columnSpanFull(),
                         ]),
-                    Step::make('Team Leader')
+                    Step::make(__('hackathon.onboarding.steps.team_leader'))
                         ->icon('hugeicons-user-star-02')
                         ->schema([
                             TextInput::make('leader_name')
+                                ->label(__('hackathon.onboarding.fields.leader_name'))
                                 ->required()
                                 ->maxLength(255),
                             TextInput::make('leader_civil_id')
+                                ->label(__('hackathon.onboarding.fields.leader_civil_id'))
                                 ->required()
                                 ->maxLength(255),
                             TextInput::make('leader_phone')
+                                ->label(__('hackathon.onboarding.fields.leader_phone'))
                                 ->tel()
                                 ->required()
                                 ->maxLength(255),
                             TextInput::make('leader_email')
+                                ->label(__('hackathon.onboarding.fields.leader_email'))
                                 ->email()
                                 ->required()
                                 ->maxLength(255),
                             TextInput::make('leader_position')
+                                ->label(__('hackathon.onboarding.fields.leader_position'))
                                 ->maxLength(255),
                             TextInput::make('leader_company')
+                                ->label(__('hackathon.onboarding.fields.leader_company'))
                                 ->maxLength(255),
                             Select::make('province')
+                                ->label(__('hackathon.onboarding.fields.province'))
                                 ->required()
                                 ->searchable()
                                 ->live()
                                 ->dehydrated(false)
                                 ->options(Province::all()->pluck('name', 'id')),
                             Select::make('leader_region')
+                                ->label(__('hackathon.onboarding.fields.leader_region'))
                                 ->searchable()
                                 ->options(function (Get $get) {
                                     $provinceId = $get('province');
@@ -116,7 +124,7 @@ class Index extends Component implements HasForms
                                 })
                                 ->required(),
                         ]),
-                    Step::make('Team Members')
+                    Step::make(__('hackathon.onboarding.steps.team_members'))
                         ->icon('hugeicons-user-group')
                         ->schema([
                             Repeater::make('members')
@@ -124,17 +132,21 @@ class Index extends Component implements HasForms
                                 ->schema([
                                     TextInput::make('full_name')
                                         ->required()
+                                        ->label(__('hackathon.onboarding.fields.full_name'))
                                         ->maxLength(255),
                                     TextInput::make('civil_id')
                                         ->required()
+                                        ->label(__('hackathon.onboarding.fields.civil_id'))
                                         ->maxLength(255),
                                     Select::make('province')
                                         ->required()
                                         ->searchable()
+                                        ->label(__('hackathon.onboarding.fields.province'))
                                         ->live()
                                         ->dehydrated(false)
                                         ->options(Province::all()->pluck('name', 'id')),
                                     Select::make('current_residence')
+                                        ->label(__('hackathon.onboarding.fields.current_residence'))
                                         ->searchable()
                                         ->options(function (Get $get) {
                                             $provinceId = $get('province');
@@ -147,32 +159,38 @@ class Index extends Component implements HasForms
                                         ->required(),
                                     TextInput::make('position_in_team')
                                         ->required()
+                                        ->label(__('hackathon.onboarding.fields.position_in_team'))
                                         ->maxLength(255),
                                     Select::make('skills')
                                         ->relationship('skills', 'name')
                                         ->multiple()
                                         ->preload()
+                                        ->label(__('hackathon.onboarding.fields.skills'))
                                         ->searchable(),
                                     Select::make('attendance_ability')
                                         ->required()
+                                        ->label(__('hackathon.onboarding.fields.attendance_ability'))
                                         ->options(AttendanceType::class)->searchable(),
                                 ])->columns(2)
                         ]),
-                    Step::make('Team Experience')
+                    Step::make(__('hackathon.onboarding.steps.team_experience'))
                         ->icon('hugeicons-work-history')
                         ->schema([
                             TextInput::make('profile')
+                                ->label(__('hackathon.onboarding.fields.profile'))
                                 ->maxLength(255),
                             FileUpload::make('profile_intro_file')
+                                ->label(__('hackathon.onboarding.fields.profile_intro_file'))
                                 ->acceptedFileTypes(['application/pdf']),
                         ]),
-                    Wizard\Step::make('Team Declaration')
+                    Step::make(__('hackathon.onboarding.steps.team_declaration'))
                         ->icon('hugeicons-hand-prayer')
                         ->schema([
                             View::make('filament.resources.team-resource.declaration')
                                 ->columnSpanFull(),
                             FileUpload::make('declaration_file')
                                 ->required()
+                                ->label(__('hackathon.onboarding.fields.declaration_file'))
                                 ->maxSize(1024 * 5) // 5MB
                                 ->acceptedFileTypes(['application/pdf'])
                                 ->columnSpanFull(),
@@ -181,13 +199,10 @@ class Index extends Component implements HasForms
                     ->skippable()
                     ->columnSpanFull()
                     ->submitAction(new HtmlString(Blade::render(<<<BLADE
-                    <x-filament::button
-                        type="submit"
-                        size="sm"
-                    >
-                        Submit
-                    </x-filament::button>
-                BLADE))),
+            <x-filament::button type="submit" size="sm">
+                {{ __('hackathon.onboarding.submit') }}
+            </x-filament::button>
+        BLADE))),
             ])
             ->model(Team::class)
             ->statePath('data');
@@ -200,16 +215,23 @@ class Index extends Component implements HasForms
         $user = auth()->user();
 
         // Create or update the user's club
-        $user->team()->updateOrCreate(
+        $team  = $user->team()->updateOrCreate(
             ['user_id' => $user->id], // Match by user ID
             $data // Fillable fields from form
         );
 
+        $this->form->model($team)->saveRelationships();
 
         // assign the user to the club
         $user->assignRole('team');
 
-        redirect()->route('filament.club.pages.dashboard'); // Change route as needed
+        redirect()->route('filament.user.pages.dashboard'); // Change route as needed
+    }
+
+    public function show()
+    {
+        $user = auth()->user();
+        dd($user);
     }
     #[Layout('components.layouts.onboarding')]
     public function render()

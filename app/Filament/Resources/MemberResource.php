@@ -80,7 +80,10 @@ class MemberResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('team_id')
+                    ->relationship('team', 'name')
+                    ->preload()
+                    ->searchable(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use App\Http\Middleware\EnsureUserHasTeam;
+use App\Http\Middleware\RedirectIfUserHasTeam;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -51,9 +53,13 @@ class UserPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                EnsureUserHasTeam::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ])->brandLogo(asset('images/logos.svg'));
+            ])
+            ->viteTheme('resources/css/filament/user/theme.css')
+            ->topNavigation()
+            ->brandLogo(asset('images/logos.svg'));
     }
 }

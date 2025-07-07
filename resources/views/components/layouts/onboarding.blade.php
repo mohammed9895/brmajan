@@ -19,7 +19,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="antialiased dark">
+<body class="antialiased bg-gray-950">
 {{ $slot }}
 
 @filamentScripts
