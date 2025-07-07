@@ -32,12 +32,12 @@
                     <div class="flex-col flex justify-center items-center ">
                         @svg('hugeicons-building-03', 'w-14 h-14  text-white')
                         <h1 class="text-white text-lg">{{ __('hackathon.companies') }}</h1>
-                        <h1 class="text-5xl font-bold text-white">50</h1>
+                        <h1 class="text-5xl font-bold text-white">{{ $companies_count }}</h1>
                     </div>
                     <div class="flex-col flex justify-center items-center ">
                         @svg('hugeicons-user-group', 'w-14 h-14  text-white')
                         <h1 class="text-white text-lg">{{ __('hackathon.individuals') }}</h1>
-                        <h1 class="text-5xl font-bold text-white">20</h1>
+                        <h1 class="text-5xl font-bold text-white">{{ $indiviuals_count }}</h1>
                     </div>
                 </div>
             </div>
