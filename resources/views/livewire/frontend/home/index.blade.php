@@ -128,7 +128,7 @@
 @push('scripts')
     <script>
         // Set your target date here
-        const targetDate = new Date("2025-07-28T00:00:00").getTime();
+        const targetDate = new Date("2025-07-10:00:00").getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
