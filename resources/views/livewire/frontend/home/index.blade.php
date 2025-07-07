@@ -1,7 +1,7 @@
 <div class="relative">
     <section class="bg-slate-900 before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-gradient-to-br before:z-30 before:from-[#4150A2] before:from-10% before:to-transparent before:to-40% after:content-[''] after:absolute after:w-full after:h-full after:top-0 after:left-0 after:bg-gradient-to-tl  after:z-30 after:from-[#4150A2] after:to-transparent after:from-10% after:to-40% relative">
-        <img src="{{ asset('images/style-left.svg') }}" class="absolute z-30" alt="">
-        <img src="{{ asset('images/style-right.svg') }}" class="absolute z-30 right-0 bottom-0 hidden md:block" alt="">
+        <img src="{{ asset('images/style-left.svg') }}" class="absolute z-30 rtl:right-0 rtl:-scale-x-100" alt="">
+        <img src="{{ asset('images/style-right.svg') }}" class="absolute z-30 right-0 rtl:left-0 rtl:right-auto rtl:rotate-180 bottom-0 hidden md:block" alt="">
         <div class="justify-center items-center flex container h-[1100px] flex-col relative z-40">
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl text-slate-100 font-bold uppercase tracking-wider rtl:tracking-normal">{{ __('hackathon.title') }}</h1>
@@ -52,7 +52,7 @@
                 <h1 class="text-4xl text-slate-100 font-bold text-center uppercase">{{ __('hackathon.challenges.title') }}</h1>
                 <a href="{{ route('challenges.index') }}" class="bg-slate-100 px-6 py-5 rounded font-bold uppercase">{{ __('hackathon.challenges.see_all') }}</a>
             </div>
-            <div class="grid grid-cols-1 md:col-span-3 gap-10 mt-20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-20">
                 @foreach($challenges as $challenge)
                     <a href="{{ route('challenges.show', ['challenge' => $challenge]) }}" class="bg-[#6D33D1] rounded-lg relative border-slate-400/50 border inline-block">
                         <div class="w-full h-[400px] rounded-t-lg" style="background: url('/storage/{{ $challenge->image }}'); background-size:  cover; background-position: center center;"></div>
