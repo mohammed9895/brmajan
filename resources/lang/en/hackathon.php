@@ -61,8 +61,8 @@ return [
             'items' => [
                 'leader_only' => 'Registration must be completed by the team leader only.',
                 'team_size' => 'Each team should consist of <b>3 to 5 members</b>.',
-                'availability' => 'Participants must be available throughout the hackathon period (8 weeks – from July 7 to August 28, 2025).',
-                'quality' => 'Teams will be shortlisted based on the quality of their registration.',
+                'availability' => 'Participants must be available throughout the hackathon period (8 weeks – from July 21 to September 11, 2025).',
+                'quality' => 'Teams will be selected based on the evaluation of the screening committee.',
             ],
         ],
         'fields' => [
