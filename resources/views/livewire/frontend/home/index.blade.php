@@ -87,41 +87,41 @@
                 <h1 class="text-4xl text-slate-100 font-bold text-center uppercase"> {{ __('hackathon.speakers.title') }}</h1>
                 <a href="{{ route('filament.user.auth.login') }}" class="bg-slate-100 px-6 py-5 rounded font-bold uppercase"> {{ __('hackathon.speakers.see_all') }}</a>
             </div>
-            <div class="grid grid-cols-3 gap-10 mt-40">
-                <a href="#" class="inline-block">
-                   <div class="bg-[#00A29A] rounded-lg relative border-slate-400/50  ">
-                       <div class="w-full h-[300px] rounded-t-lg flex justify-center items-center">
-                           <img src="{{ asset('images/aziz.png') }}" class="grayscale rounded-b-xl absolute bottom-0 left-1/2 -translate-x-1/2" width="300"  alt="">
-                       </div>
-                   </div>
-                    <div class="z-30 relative mt-5">
-                        <h1 class="text-2xl text-white font-bold mb-2">Mohammed Hamad</h1>
-                        <p class="text-white/60">Full Stack web developer</p>
-                    </div>
-                </a>
-                <a href="#" class="inline-block">
-                    <div class="bg-[#00A29A] rounded-lg relative border-slate-400/50  ">
-                        <div class="w-full h-[300px] rounded-t-lg flex justify-center items-center">
-                            <img src="{{ asset('images/aziz.png') }}" class="grayscale rounded-b-xl absolute bottom-0 left-1/2 -translate-x-1/2" width="300"  alt="">
-                        </div>
-                    </div>
-                    <div class="z-30 relative mt-5">
-                        <h1 class="text-2xl text-white font-bold mb-2">Mohammed Hamad</h1>
-                        <p class="text-white/60">Full Stack web developer</p>
-                    </div>
-                </a>
-                <a href="#" class="inline-block">
-                    <div class="bg-[#00A29A] rounded-lg relative border-slate-400/50  ">
-                        <div class="w-full h-[300px] rounded-t-lg flex justify-center items-center">
-                            <img src="{{ asset('images/aziz.png') }}" class="grayscale rounded-b-xl absolute bottom-0 left-1/2 -translate-x-1/2" width="300"  alt="">
-                        </div>
-                    </div>
-                    <div class="z-30 relative mt-5">
-                        <h1 class="text-2xl text-white font-bold mb-2">Mohammed Hamad</h1>
-                        <p class="text-white/60">Full Stack web developer</p>
-                    </div>
-                </a>
-            </div>
+{{--            <div class="grid grid-cols-3 gap-10 mt-40">--}}
+{{--                <a href="#" class="inline-block">--}}
+{{--                   <div class="bg-[#00A29A] rounded-lg relative border-slate-400/50  ">--}}
+{{--                       <div class="w-full h-[300px] rounded-t-lg flex justify-center items-center">--}}
+{{--                           <img src="{{ asset('images/aziz.png') }}" class="grayscale rounded-b-xl absolute bottom-0 left-1/2 -translate-x-1/2" width="300"  alt="">--}}
+{{--                       </div>--}}
+{{--                   </div>--}}
+{{--                    <div class="z-30 relative mt-5">--}}
+{{--                        <h1 class="text-2xl text-white font-bold mb-2">Mohammed Hamad</h1>--}}
+{{--                        <p class="text-white/60">Full Stack web developer</p>--}}
+{{--                    </div>--}}
+{{--                </a>--}}
+{{--                <a href="#" class="inline-block">--}}
+{{--                    <div class="bg-[#00A29A] rounded-lg relative border-slate-400/50  ">--}}
+{{--                        <div class="w-full h-[300px] rounded-t-lg flex justify-center items-center">--}}
+{{--                            <img src="{{ asset('images/aziz.png') }}" class="grayscale rounded-b-xl absolute bottom-0 left-1/2 -translate-x-1/2" width="300"  alt="">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="z-30 relative mt-5">--}}
+{{--                        <h1 class="text-2xl text-white font-bold mb-2">Mohammed Hamad</h1>--}}
+{{--                        <p class="text-white/60">Full Stack web developer</p>--}}
+{{--                    </div>--}}
+{{--                </a>--}}
+{{--                <a href="#" class="inline-block">--}}
+{{--                    <div class="bg-[#00A29A] rounded-lg relative border-slate-400/50  ">--}}
+{{--                        <div class="w-full h-[300px] rounded-t-lg flex justify-center items-center">--}}
+{{--                            <img src="{{ asset('images/aziz.png') }}" class="grayscale rounded-b-xl absolute bottom-0 left-1/2 -translate-x-1/2" width="300"  alt="">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="z-30 relative mt-5">--}}
+{{--                        <h1 class="text-2xl text-white font-bold mb-2">Mohammed Hamad</h1>--}}
+{{--                        <p class="text-white/60">Full Stack web developer</p>--}}
+{{--                    </div>--}}
+{{--                </a>--}}
+{{--            </div>--}}
         </div>
     </section>
 </div>
