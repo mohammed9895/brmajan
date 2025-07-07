@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'site_name' => 'Brmajan',
     'nav' => [
         'login' => 'Login',
         'register' => 'Register Now',

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'site_name' => 'برمجان',
     'nav' => [
         'login' => 'تسجيل دخول',
         'register' => 'حساب جديد',
