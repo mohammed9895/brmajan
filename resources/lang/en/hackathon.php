@@ -4,6 +4,7 @@ return [
     'nav' => [
         'login' => 'Login',
         'register' => 'Register Now',
+        'my_team' => 'My Team'
     ],
     'title' => 'Digital Transformation Hackathon',
     'subtitle' => 'From innovative solutions… to institutional transformation – Stay tuned!',

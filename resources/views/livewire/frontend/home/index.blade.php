@@ -1,28 +1,28 @@
 <div class="relative">
     <section class="bg-slate-900 before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-gradient-to-br before:z-30 before:from-[#4150A2] before:from-10% before:to-transparent before:to-40% after:content-[''] after:absolute after:w-full after:h-full after:top-0 after:left-0 after:bg-gradient-to-tl  after:z-30 after:from-[#4150A2] after:to-transparent after:from-10% after:to-40% relative">
         <img src="{{ asset('images/style-left.svg') }}" class="absolute z-30" alt="">
-        <img src="{{ asset('images/style-right.svg') }}" class="absolute z-30 right-0 bottom-0" alt="">
+        <img src="{{ asset('images/style-right.svg') }}" class="absolute z-30 right-0 bottom-0 hidden md:block" alt="">
         <div class="justify-center items-center flex container h-[1100px] flex-col relative z-40">
             <div class="text-center">
-                <h1 class="text-6xl text-slate-100 font-bold uppercase tracking-wider">{{ __('hackathon.title') }}</h1>
-                <h2 class="text-4xl text-slate-100 tracking-wider capitalize mt-10">{{ __('hackathon.subtitle') }}</h2>
+                <h1 class="text-4xl md:text-6xl text-slate-100 font-bold uppercase tracking-wider rtl:tracking-normal">{{ __('hackathon.title') }}</h1>
+                <h2 class="text-2xl md:text-4xl text-slate-100 tracking-wider capitalize mt-10  rtl:tracking-normal">{{ __('hackathon.subtitle') }}</h2>
             </div>
-            <div class="bg-transparent border border-white/70 z-40 shadow-[inset_0px_0px_5px_5px_rgba(255,_255,_255,_0.1)] flex justify-between mt-10 p-5 space-x-8 rounded-xl">
+            <div class="bg-transparent border border-white/70 z-40 shadow-[inset_0px_0px_5px_5px_rgba(255,_255,_255,_0.1)] grid grid-cols-2 md:flex flex-col md:flex-row justify-between mt-10 p-5 space-x-8 rtl:space-x-reverse rounded-xl">
                 <div class="flex flex-col justify-center items-center text-white space-y-5 p-5 bg-purple-700 rounded-xl">
-                    <h1 class="text-3xl text-slate-300">{{ __('hackathon.days') }}</h1>
-                    <h4 id="days" class="text-7xl font-bold">10</h4>
+                    <h1 class="text-2xl md:text-3xl text-slate-300">{{ __('hackathon.days') }}</h1>
+                    <h4 id="days" class="text-5xl md:text-7xl font-bold">10</h4>
                 </div>
                 <div class="flex flex-col justify-center items-center text-white space-y-5 p-5 rounded-lg">
-                    <h1 class="text-3xl text-slate-300">{{ __('hackathon.hours') }}</h1>
-                    <h4 id="hours" class="text-7xl font-bold">12</h4>
+                    <h1 class="text-2xl md:text-3xl text-slate-300">{{ __('hackathon.hours') }}</h1>
+                    <h4 id="hours" class="text-5xl md:text-7xl font-bold">12</h4>
                 </div>
                 <div class="flex flex-col justify-center items-center text-white space-y-5 p-5 rounded-lg">
-                    <h1 class="text-3xl text-slate-300">{{ __('hackathon.minutes') }}</h1>
-                    <h4 id="minutes" class="text-7xl font-bold">14</h4>
+                    <h1 class="text-2xl md:text-3xl text-slate-300">{{ __('hackathon.minutes') }}</h1>
+                    <h4 id="minutes" class="text-5xl md:text-7xl font-bold">14</h4>
                 </div>
                 <div class="flex flex-col justify-center items-center text-white space-y-5 p-5 rounded-lg">
-                    <h1 class="text-3xl text-slate-300">{{ __('hackathon.seconds') }}</h1>
-                    <h4 id="seconds" class="text-7xl font-bold">60</h4>
+                    <h1 class="text-2xl md:text-3xl text-slate-300">{{ __('hackathon.seconds') }}</h1>
+                    <h4 id="seconds" class="text-5xl md:text-7xl font-bold">60</h4>
                 </div>
             </div>
             <h3 class="text-2xl text-white mt-7 text-lg z-40">{{ __('hackathon.countdown_label') }}</h3>
@@ -50,21 +50,21 @@
         <div class="container">
             <div class="flex justify-between items-center">
                 <h1 class="text-4xl text-slate-100 font-bold text-center uppercase">{{ __('hackathon.challenges.title') }}</h1>
-                <a href="{{ route('filament.user.auth.login') }}" class="bg-slate-100 px-6 py-5 rounded font-bold uppercase">{{ __('hackathon.challenges.see_all') }}</a>
+                <a href="{{ route('challenges.index') }}" class="bg-slate-100 px-6 py-5 rounded font-bold uppercase">{{ __('hackathon.challenges.see_all') }}</a>
             </div>
-            <div class="grid grid-cols-3 gap-10 mt-20">
+            <div class="grid grid-cols-1 md:col-span-3 gap-10 mt-20">
                 @foreach($challenges as $challenge)
                     <a href="{{ route('challenges.show', ['challenge' => $challenge]) }}" class="bg-[#6D33D1] rounded-lg relative border-slate-400/50 border inline-block">
                         <div class="w-full h-[400px] rounded-t-lg" style="background: url('/storage/{{ $challenge->image }}'); background-size:  cover; background-position: center center;"></div>
                         <div class="z-30 relative p-5">
                             <h1 class="text-2xl text-white font-bold mb-3">{{ $challenge->title }}</h1>
-                            <div class="flex space-x-3 mb-3">
-                                <div class="flex items-center space-x-2 text-white">
-                                    @svg('hugeicons-money-04', 'text-white w-5 h-5 mr-2')
+                            <div class="flex space-x-3 rtl:space-x-reverse mb-3">
+                                <div class="flex items-center space-x-2 text-white rtl:space-x-reverse">
+                                    @svg('hugeicons-money-04', 'text-white w-5 h-5 mr-2 rtl:mr-0 rtl:ml-2')
                                     {{ $challenge->prize }} OMR
                                 </div>
-                                <div class="flex items-center space-x-2 text-white">
-                                    @svg('hugeicons-user-group', 'text-white w-5 h-5 mr-2')
+                                <div class="flex items-center space-x-2 rtl:space-x-reverse text-white">
+                                    @svg('hugeicons-user-group', 'text-white w-5 h-5 mr-2 rtl:mr-0 rtl:ml-2')
                                     50 {{ __('hackathon.challenges.participants') }}
                                 </div>
                             </div>

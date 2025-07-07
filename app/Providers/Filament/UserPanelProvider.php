@@ -60,6 +60,7 @@ class UserPanelProvider extends PanelProvider
             ])
             ->viteTheme('resources/css/filament/user/theme.css')
             ->topNavigation()
+            ->font('IBM ')
             ->brandLogo(asset('images/logos.svg'));
     }
 }
